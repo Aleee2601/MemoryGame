@@ -1,0 +1,76 @@
+<UserControl x:Class="MemoryGame.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MemoryGame.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="500">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Border Style="{StaticResource CardStyle}" Margin="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Header -->
+            <Label Grid.Row="0" Content="About Memory Game" Style="{StaticResource HeaderLabel}"/>
+            
+            <!-- About Content -->
+            <StackPanel Grid.Row="1" Margin="0,10">
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Student Name:" FontWeight="SemiBold" Margin="0,5,10,5"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding StudentName}" Margin="0,5"/>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Email:" FontWeight="SemiBold" Margin="0,5,10,5"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,5">
+                        <Hyperlink Command="{Binding SendEmailCommand}">
+                            <TextBlock Text="{Binding Email}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Group:" FontWeight="SemiBold" Margin="0,5,10,5"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Group}" Margin="0,5"/>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Specialization:" FontWeight="SemiBold" Margin="0,5,10,5"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Specialization}" Margin="0,5"/>
+                </Grid>
+                
+                <TextBlock TextWrapping="Wrap" Margin="0,10">
+                    <Run FontWeight="SemiBold">Memory Game</Run> is a classic card matching game where players need to find pairs of matching cards.
+                    The game features multiple difficulty levels, customizable board sizes, and different image categories.
+                </TextBlock>
+                
+                <TextBlock TextWrapping="Wrap" Margin="0,10">
+                    This application was developed as a project for the Advanced Programming Methods course at Transilvania University of Brasov.
+                    It implements the MVVM (Model-View-ViewModel) architectural pattern and uses data binding for UI updates.
+                </TextBlock>
+            </StackPanel>
+            
+            <!-- Close Button -->
+            <Button Grid.Row="2" Content="Close" Style="{StaticResource PrimaryButton}" 
+                    Command="{Binding CloseCommand}" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+        </Grid>
+    </Border>
+</UserControl>

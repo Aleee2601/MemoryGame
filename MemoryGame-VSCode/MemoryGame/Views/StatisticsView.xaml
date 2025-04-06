@@ -1,0 +1,83 @@
+<UserControl x:Class="MemoryGame.Views.StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MemoryGame.Views"
+             xmlns:converters="clr-namespace:MemoryGame.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:PathToImageSourceConverter x:Key="PathToImageSourceConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Border Style="{StaticResource CardStyle}" Margin="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Header -->
+            <Label Grid.Row="0" Content="Player Statistics" Style="{StaticResource HeaderLabel}"/>
+            
+            <!-- Statistics Table -->
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False" 
+                      IsReadOnly="True" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                      BorderThickness="0" Background="Transparent" RowBackground="White" AlternatingRowBackground="#f5f6fa">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Player" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Border Grid.Column="0" Width="30" Height="30" CornerRadius="15" 
+                                            BorderThickness="1" BorderBrush="#dfe6e9" Margin="0,0,10,0">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding ProfileImagePath, Converter={StaticResource PathToImageSourceConverter}}" 
+                                                        Stretch="UniformToFill"/>
+                                        </Border.Background>
+                                    </Border>
+                                    
+                                    <TextBlock Grid.Column="1" Text="{Binding Username}" 
+                                               VerticalAlignment="Center" FontSize="14"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Games Played" Width="Auto" Binding="{Binding GamesPlayed}"/>
+                    <DataGridTextColumn Header="Games Won" Width="Auto" Binding="{Binding GamesWon}"/>
+                    <DataGridTemplateColumn Header="Win Rate" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0:P0}">
+                                            <Binding Path="GamesWon"/>
+                                            <Binding Path="GamesPlayed"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <!-- Close Button -->
+            <Button Grid.Row="2" Content="Close" Style="{StaticResource PrimaryButton}" 
+                    Command="{Binding CloseCommand}" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+        </Grid>
+    </Border>
+</UserControl>
