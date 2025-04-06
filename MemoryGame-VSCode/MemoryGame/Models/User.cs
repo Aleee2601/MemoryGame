@@ -11,8 +11,11 @@ namespace MemoryGame.Models
         public int GamesWon { get; set; }
         public List<Guid> SavedGames { get; set; } = new List<Guid>();
 
+        // This constructor is needed for deserialization
         public User()
         {
+            Username = string.Empty;
+            ProfileImagePath = string.Empty;
         }
 
         public User(string username, string profileImagePath)

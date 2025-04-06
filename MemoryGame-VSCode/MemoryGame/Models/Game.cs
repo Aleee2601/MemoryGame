@@ -17,9 +17,12 @@ namespace MemoryGame.Models
         public bool IsCompleted { get; set; }
         public bool IsWon { get; set; }
 
+        // This constructor is needed for deserialization
         public Game()
         {
             StartTime = DateTime.Now;
+            Username = string.Empty;
+            Category = string.Empty;
         }
 
         public Game(string username, string category, int rows, int columns, TimeSpan totalTime)

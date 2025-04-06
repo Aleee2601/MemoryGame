@@ -8,14 +8,17 @@ namespace MemoryGame.Converters
 {
     public class PathToImageSourceConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value == null || string.IsNullOrEmpty(value.ToString()))
                 return null;
 
             try
             {
-                string path = value.ToString();
+                string? path = value.ToString();
+                
+                if (path == null)
+                    return null;
                 
                 // Handle relative paths
                 if (!Path.IsPathRooted(path))
@@ -41,7 +44,7 @@ namespace MemoryGame.Converters
             return null;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

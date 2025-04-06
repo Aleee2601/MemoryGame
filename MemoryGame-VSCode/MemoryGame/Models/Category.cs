@@ -6,11 +6,13 @@ namespace MemoryGame.Models
     public class Category
     {
         public string Name { get; set; }
-        public string FolderPath { get; set; }
+        public string FolderPath { get; set; } = string.Empty;
         public List<string> ImagePaths { get; set; } = new List<string>();
 
+        // This constructor is needed for deserialization
         public Category()
         {
+            Name = string.Empty;
         }
 
         public Category(string name, string folderPath)

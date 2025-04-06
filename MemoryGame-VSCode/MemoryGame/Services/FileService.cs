@@ -85,7 +85,12 @@ namespace MemoryGame.Services
                 if (File.Exists(filePath))
                 {
                     string json = File.ReadAllText(filePath);
-                    return JsonSerializer.Deserialize<Game>(json);
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    
+                    return JsonSerializer.Deserialize<Game>(json, options);
                 }
             }
             catch (Exception ex)

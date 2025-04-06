@@ -32,16 +32,26 @@ namespace MemoryGame.ViewModels
             set => SetProperty(ref _selectedProfileImagePath, value);
         }
 
+        //public User SelectedUser
+        //{
+        //    get => _selectedUser;
+        //    set
+        //    {
+        //        if (SetProperty(ref _selectedUser, value))
+        //        {
+        //            ((RelayCommand)DeleteUserCommand).RaiseCanExecuteChanged();
+        //            ((RelayCommand)PlayCommand).RaiseCanExecuteChanged();
+        //        }
+        //    }
+        //}
         public User SelectedUser
         {
             get => _selectedUser;
             set
             {
-                if (SetProperty(ref _selectedUser, value))
-                {
-                    ((RelayCommand)DeleteUserCommand).RaiseCanExecuteChanged();
-                    ((RelayCommand)PlayCommand).RaiseCanExecuteChanged();
-                }
+                _selectedUser = value;
+                OnPropertyChanged();
+                ((RelayCommand)PlayCommand).RaiseCanExecuteChanged();
             }
         }
 
@@ -106,6 +116,7 @@ namespace MemoryGame.ViewModels
                 if (success)
                 {
                     Users.Add(newUser);
+                    SelectedUser = newUser; // <- Aceasta linie lipseste
                     NewUsername = string.Empty;
                     SelectedProfileImagePath = string.Empty;
                 }
@@ -168,7 +179,10 @@ namespace MemoryGame.ViewModels
 
         private void Play(object parameter)
         {
+            System.Diagnostics.Debug.WriteLine("Play command triggered");
             PlayRequested?.Invoke(SelectedUser);
+
         }
+
     }
 }

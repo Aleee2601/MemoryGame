@@ -107,7 +107,8 @@
                         <Button Grid.Column="0" Content="Delete User" Style="{StaticResource DangerButton}" 
                                 Command="{Binding DeleteUserCommand}" Margin="0,0,5,0"/>
                         <Button Grid.Column="1" Content="Play" Style="{StaticResource PrimaryButton}" 
-                                Command="{Binding PlayCommand}" Margin="5,0,0,0"/>
+                                Command="{Binding PlayCommand}" Margin="5,0,0,0"
+                                IsEnabled="{Binding IsUserSelected}"/>
                     </Grid>
                 </StackPanel>
             </Border>

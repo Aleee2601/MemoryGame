@@ -44,28 +44,44 @@ namespace MemoryGame.Services
 
         public List<Category> LoadCategories()
         {
-            // Create sample categories
-            List<Category> categories = new List<Category>
+            return new List<Category>
             {
-                new Category { Name = "Animals", ImagePaths = GenerateDummyImagePaths(18) },
-                new Category { Name = "Nature", ImagePaths = GenerateDummyImagePaths(18) },
-                new Category { Name = "Food", ImagePaths = GenerateDummyImagePaths(18) }
+                new Category
+                {
+                    Name = "Animals",
+                    ImagePaths = GenerateImagePaths("Animals")
+                },
+                new Category
+                {
+                    Name = "Nature",
+                    ImagePaths = GenerateImagePaths("Nature")
+                },
+                new Category
+                {
+                    Name = "Food",
+                    ImagePaths = GenerateImagePaths("Food")
+                }
             };
-
-            return categories;
         }
 
-        private List<string> GenerateDummyImagePaths(int count)
+
+        private List<string> GenerateImagePaths(string categoryName)
         {
-            // Generate dummy image paths with color codes
-            List<string> paths = new List<string>();
-            for (int i = 0; i < count; i++)
-            {
-                Color color = _colors[i % _colors.Count];
-                paths.Add($"#{color.R:X2}{color.G:X2}{color.B:X2}");
-            }
-            return paths;
+            string relativeFolder = $"Resources/Images/{categoryName}";
+            string fullFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFolder);
+
+            if (!Directory.Exists(fullFolderPath))
+                return new List<string>();
+
+            var extensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+            var files = Directory.GetFiles(fullFolderPath)
+                                 .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()))
+                                 .Select(f => Path.Combine(relativeFolder, Path.GetFileName(f)))
+                                 .ToList();
+
+            return files;
         }
+
 
         public Game CreateNewGame(string username, string category, int rows, int columns, TimeSpan totalTime)
         {
@@ -82,7 +98,7 @@ namespace MemoryGame.Services
         {
             List<Card> cards = new List<Card>();
             List<Category> categories = LoadCategories();
-            Category selectedCategory = categories.FirstOrDefault(c => c.Name == category);
+            Category? selectedCategory = categories.FirstOrDefault(c => c.Name == category);
             
             if (selectedCategory == null)
             {

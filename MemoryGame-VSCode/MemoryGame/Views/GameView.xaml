@@ -110,8 +110,12 @@
                                   DisplayMemberPath="Name"/>
                     </StackPanel>
                     
-                    <Button Content="Start New Game" Style="{StaticResource PrimaryButton}" 
-                            Command="{Binding NewGameCommand}" VerticalAlignment="Bottom"/>
+                    <!--<Button Content="Start New Game" Style="{StaticResource PrimaryButton}" 
+                            Command="{Binding NewGameCommand}" VerticalAlignment="Bottom"/>-->
+                    <Button Content="Start Game"
+                                Command="{Binding NewGameCommand}"
+                                IsEnabled="{Binding Path=NewGameCommand.CanExecute, Mode=OneWay}" />        
+
                 </StackPanel>
                 
                 <!-- Timer Display -->
@@ -129,7 +133,7 @@
                             Command="{Binding ExitCommand}"/>
                 </StackPanel>
             </Grid>
-            
+
             <!-- Game Board -->
             <Border Grid.Row="1" Style="{StaticResource CardStyle}" 
                     Visibility="{Binding CurrentGame, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -141,32 +145,18 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Style="{StaticResource MemoryCardStyle}" Command="{Binding DataContext.CardClickCommand, 
-                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}">
-                                <Button.Content>
-                                    <Grid>
-                                        <!-- Card Back -->
-                                        <Border Background="{StaticResource PrimaryBrush}" CornerRadius="8"
-                                                Visibility="{Binding IsFlipped, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=invert}">
-                                            <TextBlock Text="?" FontSize="40" FontWeight="Bold" Foreground="White" 
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                        
-                                        <!-- Card Front -->
-                                        <Border Background="{Binding ImagePath, Converter={StaticResource ColorToSolidBrushConverter}}" 
-                                                CornerRadius="8" BorderBrush="{StaticResource PrimaryBrush}" BorderThickness="2"
-                                                Visibility="{Binding IsFlipped, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <TextBlock Text="{Binding PairId}" FontSize="24" FontWeight="Bold" Foreground="White" 
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </Grid>
-                                </Button.Content>
+                            <Button Style="{StaticResource MemoryCardStyle}"
+                            Command="{Binding DataContext.CardClickCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                            CommandParameter="{Binding}">
+                                <Image Source="{Binding DisplayImage, Converter={StaticResource PathToImageSourceConverter}}"
+                               Width="80" Height="80" Stretch="UniformToFill"/>
                             </Button>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Border>
-            
+
+
             <!-- Welcome Screen -->
             <Border Grid.Row="1" Style="{StaticResource CardStyle}" 
                     Visibility="{Binding CurrentGame, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=invert}">
