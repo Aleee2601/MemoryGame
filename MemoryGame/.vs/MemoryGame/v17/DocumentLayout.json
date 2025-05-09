@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Facultate\\Anul_2\\Sem_2\\MAP\\MemoryGame\\MemoryGame\\",
+  "WorkspaceRootPath": "D:\\Facultate\\Anu 2\\MAP\\New folder\\MemoryGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5AD8C0BF-0FEF-4B54-BB55-FEBD20319A64}|MemoryGame\\MemoryGame.csproj|e:\\facultate\\anul_2\\sem_2\\map\\memorygame\\memorygame\\memorygame\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{5AD8C0BF-0FEF-4B54-BB55-FEBD20319A64}|MemoryGame\\MemoryGame.csproj|d:\\facultate\\anu 2\\map\\new folder\\memorygame\\memorygame\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5AD8C0BF-0FEF-4B54-BB55-FEBD20319A64}|MemoryGame\\MemoryGame.csproj|solutionrelative:memorygame\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5AD8C0BF-0FEF-4B54-BB55-FEBD20319A64}|MemoryGame\\MemoryGame.csproj|e:\\facultate\\anul_2\\sem_2\\map\\memorygame\\memorygame\\memorygame\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5AD8C0BF-0FEF-4B54-BB55-FEBD20319A64}|MemoryGame\\MemoryGame.csproj|d:\\facultate\\anu 2\\map\\new folder\\memorygame\\memorygame\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5AD8C0BF-0FEF-4B54-BB55-FEBD20319A64}|MemoryGame\\MemoryGame.csproj|solutionrelative:memorygame\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,19 +18,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "E:\\Facultate\\Anul_2\\Sem_2\\MAP\\MemoryGame\\MemoryGame\\MemoryGame\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\Facultate\\Anu 2\\MAP\\New folder\\MemoryGame\\MemoryGame\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MemoryGame\\MainWindow.xaml",
-              "ToolTip": "E:\\Facultate\\Anul_2\\Sem_2\\MAP\\MemoryGame\\MemoryGame\\MemoryGame\\MainWindow.xaml",
+              "ToolTip": "D:\\Facultate\\Anu 2\\MAP\\New folder\\MemoryGame\\MemoryGame\\MainWindow.xaml",
               "RelativeToolTip": "MemoryGame\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-04-05T12:30:45.954Z",
@@ -40,14 +36,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "E:\\Facultate\\Anul_2\\Sem_2\\MAP\\MemoryGame\\MemoryGame\\MemoryGame\\MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Facultate\\Anu 2\\MAP\\New folder\\MemoryGame\\MemoryGame\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MemoryGame\\MainWindow.xaml.cs",
-              "ToolTip": "E:\\Facultate\\Anul_2\\Sem_2\\MAP\\MemoryGame\\MemoryGame\\MemoryGame\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Facultate\\Anu 2\\MAP\\New folder\\MemoryGame\\MemoryGame\\MainWindow.xaml.cs",
               "RelativeToolTip": "MemoryGame\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T12:30:43.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T12:30:43.605Z"
             }
           ]
         }
